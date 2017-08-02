@@ -48,7 +48,6 @@ gui, add, button, x345 y38 w55 h20, Submit
 ;------------------
 
 gui, add, edit, x230 y118 w55 h20 vedit_i1,
-
 gui, add, edit, x285 y118 w55 h20 vedit_i2,
 
 gui, add, edit, x340 y118 w55 h20 vedit_i3,
@@ -100,9 +99,9 @@ gui, add, button, x285 y70 w55 h20, Primary
 
 gui, add, button, x285 y90 w55 h20, Handle
 
-gui, add, button, x340 y70 w55 h20, vid
+gui, add, button, x340 y70 w55 h20, vd
 
-gui, add, button, x340 y90 w55 h20, Coorde
+gui, add, button, x340 y90 w55 h20, Coe
 
 Gui, add, Button, x162 y70 w60 h20 , Mail
 
