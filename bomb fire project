@@ -20,7 +20,6 @@ tabcount=0
 ;~ gui, add, picture, x7 y7 w100 h100 , data\관리자.png
 
 stringreplace,list,list,|,||
-
 Gui, Add, Text, x20 y10 w70 h10 , BombFire!
 
 Gui, Add, Text, x20 y30 w70 h10 vtext,
@@ -57,25 +56,25 @@ gui, add, edit, x230 y138 w55 h20 vedit_i4,
 
 gui, add, edit, x285 y138 w55 h20 vedit_i5,
 
-gui, add, edit, x340 y138 w55 h20, void1
+gui, add, edit, x340 y138 w55 h20, v1
 
-gui, add, edit, x230 y158 w55 h20, void2
+gui, add, edit, x230 y158 w55 h20, v2
 
-gui, add, edit, x285 y158 w55 h20, void3
+gui, add, edit, x285 y158 w55 h20, v3
 
-gui, add, edit, x340 y158 w55 h20, void4
+gui, add, edit, x340 y158 w55 h20, v4
 
-gui, add, edit, x230 y178 w55 h20, void5
+gui, add, edit, x230 y178 w55 h20, v5
 
-gui, add, edit, x285 y178 w55 h20, void6
+gui, add, edit, x285 y178 w55 h20, v6
 
-gui, add, edit, x340 y178 w55 h20, void7
+gui, add, edit, x340 y178 w55 h20, v7
 
-gui, add, edit, x230 y198 w55 h20, void8
+gui, add, edit, x230 y198 w55 h20, v8
 
-gui, add, edit, x285 y198 w55 h20, void9
+gui, add, edit, x285 y198 w55 h20, v9
 
-gui, add, edit, x340 y198 w55 h20, static1
+gui, add, edit, x340 y198 w55 h20, s1
 
 gui, add, edit, x230 y218 w55 h20, static2
 
