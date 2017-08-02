@@ -1,0 +1,1627 @@
+#SingleInstance force
+winget,var,list
+loop,%var%
+{
+vartemp:=var%A_Index%
+wingettitle,title,ahk_id %vartemp%
+if title=
+continue
+
+count++
+id%count%:=vartemp
+list=%list%%title%|
+}
+
+
+cbcount=0
+
+tabcount=0
+
+;~ gui, add, picture, x7 y7 w100 h100 , data\관리자.png
+
+stringreplace,list,list,|,||
+
+Gui, Add, Text, x20 y10 w70 h10 , BombFire!
+
+Gui, Add, Text, x20 y30 w70 h10 vtext,
+ 
+Gui, Add, ddl, x102 y10 w120 h120 altsubmit  vddl,%list%
+
+;this is star of new edit
+
+gui, add, edit, x230 y10 w55 h17 vedit_cb1,
+
+gui, add, edit, x285 y10 w55 h17 vedit_cb4, 
+
+gui, add, edit, x230 y27 w55 h17 vedit_cb2,
+
+gui, add, edit, x285 y27 w55 h17 vedit_cb5,
+
+gui, add, edit, x230 y44 w55 h17 vedit_cb3,
+
+gui, add, edit, x285 y44 w55 h17 vedit_cb6,
+
+gui, add, ddl, x345 y16 w55 h50 vddl2, 20121||20122||20131||20132||20141||20142||20151||20152||20161||20162||--------||label_main||label_static
+
+gui, add, button, x345 y38 w55 h20, Submit
+
+;------------------
+
+gui, add, edit, x230 y118 w55 h20 vedit_i1,
+
+gui, add, edit, x285 y118 w55 h20 vedit_i2,
+
+gui, add, edit, x340 y118 w55 h20 vedit_i3,
+
+gui, add, edit, x230 y138 w55 h20 vedit_i4,
+
+gui, add, edit, x285 y138 w55 h20 vedit_i5,
+
+gui, add, edit, x340 y138 w55 h20, void1
+
+gui, add, edit, x230 y158 w55 h20, void2
+
+gui, add, edit, x285 y158 w55 h20, void3
+
+gui, add, edit, x340 y158 w55 h20, void4
+
+gui, add, edit, x230 y178 w55 h20, void5
+
+gui, add, edit, x285 y178 w55 h20, void6
+
+gui, add, edit, x340 y178 w55 h20, void7
+
+gui, add, edit, x230 y198 w55 h20, void8
+
+gui, add, edit, x285 y198 w55 h20, void9
+
+gui, add, edit, x340 y198 w55 h20, static1
+
+gui, add, edit, x230 y218 w55 h20, static2
+
+gui, add, edit, x285 y218 w55 h20, static3
+
+gui, add, edit, x340 y218 w55 h20, static4
+
+;end of edit
+
+Gui, Add, Edit, vNewname r1 x102 y40 w120 h20,
+
+Gui, Add, Button, default x102 y90 w60 h20, Change
+
+Gui, Add, Button, default x102 y70 w60 h20, Reload
+
+gui, add, button, x230 y70 w55 h20, id_Pix
+
+gui, add, button, x230 y90 w55 h20, Return
+
+gui, add, button, x285 y70 w55 h20, Primary
+
+gui, add, button, x285 y90 w55 h20, Handle
+
+gui, add, button, x340 y70 w55 h20, void
+
+gui, add, button, x340 y90 w55 h20, Coorde
+
+Gui, add, Button, x162 y70 w60 h20 , Mail
+
+Gui, add, Button, x162 y90 w60 h20 , F2=Exit
+
+Gui, Add, ListBox, x12 y50 w80 h70 ,ClipTrack||MacroKey||Calculrator||Imgscanner
+
+Gui, Add, Text, x15 y120 w210 h12 , --M@sterBoard------------------
+
+Gui, Add, Text, x15 y140 w60 h12 , Credit
+
+Gui, Add, Text, x15 y158 w25 h12 vindex_text1,
+
+Gui, Add, Text, x40 y158 w7 h12, +
+
+Gui, Add, Text, x52 y158 w20 h12 vindex_text2,
+
+Gui, Add, Text, x15 y175 w60 h12, Score
+
+Gui, Add, Text, x15 y192 w25 h12 vgpa_math1,
+
+Gui, Add, Text, x40 y192 w6 h12, +
+
+Gui, Add, Text, x52 y192 w30 h12 vgpa_math2,
+
+Gui, Add, Text, x15 y213 w30 h12 vgpa_math3,
+
+Gui, Add, Text, x47 y213 w40 h12, (auto.)
+
+Gui, Add, Text, x15 y228 w70 h12 vindex_ready,
+
+Gui, Add, Text, x103 y140 w14 vguiindex_cm0,
+
+Gui, Add, Text, x103 y158 w14 vguiindex_cm1,
+
+Gui, Add, Text, x103 y176 w14 vguiindex_cm2,
+
+Gui, Add, Text, x103 y194 w14 vguiindex_cm3,
+
+Gui, Add, Text, x103 y212 w14 vguiindex_cm4,
+
+Gui, Add, Text, x103 y230 w14 vguiindex_cm5,
+
+Gui, Add, Text, x123 y140 w14 vguiindex_m0,
+
+Gui, Add, Text, x123 y158 w14 vguiindex_m1,
+
+Gui, Add, Text, x123 y176 w14 vguiindex_m2,
+
+Gui, Add, Text, x123 y194 w14 vguiindex_m3,
+
+Gui, Add, Text, x123 y212 w14 vguiindex_m4,
+
+Gui, Add, Text, x123 y230 w14 vguiindex_m5,
+
+Gui, Add, Text, x163 y140 w14 vguiindex_cm6,
+
+Gui, Add, Text, x163 y158 w14 vguiindex_cm7,
+
+Gui, Add, Text, x163 y176 w14 vguiindex_cm8,
+
+Gui, Add, Text, x163 y194 w14 vguiindex_cm9,
+
+Gui, Add, Text, x163 y212 w14 vguiindex_cm10,
+
+Gui, Add, Text, x163 y230 w14 vguiindex_cm11,
+
+Gui, Add, Text, x183 y140 w15 vguiindex_m6,
+
+Gui, Add, Text, x183 y158 w15 vguiindex_m7,
+
+Gui, Add, Text, x183 y176 w15 vguiindex_m8,
+
+Gui, Add, Text, x183 y194 w15 vguiindex_m9,
+
+Gui, Add, Text, x183 y212 w15 vguiindex_m10,
+
+Gui, Add, Text, x183 y230 w15 vguiindex_m11,
+
+var_f00:=140
+var_f01:=0
+loop, 6
+{
+Gui, add, text, x138 y%var_f00% w14 vindex_text_f%var_f01%,
+var_f00+=18
+var_f01++
+}
+
+ var_f00=140
+ loop, 6
+ {
+ Gui, Add, Text, x198 y%var_f00% w14 vindex_text_f%var_f01%,
+ var_f00+=18
+ var_f01++
+}
+var_f01=0
+
+; Generated using SmartGUI Creator 4.0
+
+Gui, Show, x7 y7 h246 w402, BombFire v1
+
+winset, alwaysontop, on, BombFire v1
+
+
+
+Loop{
+
+sleep, 100
+
+mousegetpos, x, y
+
+guicontrol, text, text, %x% %y%
+
+guicontrol, text, index_text1, %index_gpa_a%
+
+guicontrol, text, gpa_math1, %index_score_a%
+
+guicontrol, text, index_text2, %index_gpa_b%
+
+guicontrol, text, gpa_math2, %index_score_b%
+
+guicontrol, text, gpa_math3, %index_average%
+
+guicontrol, text, guiindex_cm0, %cal_cmanual0%
+
+guicontrol, text, guiindex_cm1, %cal_cmanual1%
+
+guicontrol, text, guiindex_cm2, %cal_cmanual2%
+
+guicontrol, text, guiindex_cm3, %cal_cmanual3%
+
+guicontrol, text, guiindex_cm4, %cal_cmanual4%
+
+guicontrol, text, guiindex_cm5, %cal_cmanual5%
+
+guicontrol, text, guiindex_cm6, %cal_cmanual6%
+
+guicontrol, text, guiindex_cm7, %cal_cmanual7%
+
+guicontrol, text, guiindex_cm8, %cal_cmanual8%
+
+guicontrol, text, guiindex_cm9, %cal_cmanual9%
+
+guicontrol, text, guiindex_cm10, %cal_cmanual10%
+
+guicontrol, text, guiindex_cm11, %cal_cmanual11%
+
+guicontrol, text, guiindex_m0, %cal_manual0%
+
+guicontrol, text, guiindex_m1, %cal_manual1%
+
+guicontrol, text, guiindex_m2, %cal_manual2%
+
+guicontrol, text, guiindex_m3, %cal_manual3%
+
+guicontrol, text, guiindex_m4, %cal_manual4%
+
+guicontrol, text, guiindex_m5, %cal_manual5%
+
+guicontrol, text, guiindex_m6, %cal_manual6%
+
+guicontrol, text, guiindex_m7, %cal_manual7%
+
+guicontrol, text, guiindex_m8, %cal_manual8%
+
+guicontrol, text, guiindex_m9, %cal_manual9%
+
+guicontrol, text, guiindex_m10, %cal_manual10%
+
+guicontrol, text, guiindex_m11, %cal_manual11%
+
+guicontrol, text, index_ready, Ready...
+
+}
+
+Return
+
+
+
+ButtonChange:
+gui,submit,nohide
+targetID := id%ddl%
+WinActivate, ahk_id %targetID%
+WinSetTitle, ahk_id %targetID%,, %Newname%
+return
+
+ButtonReload:
+reload
+
+;~ coordmode, [pixel, mouse, screen]
+;~ scroll:
+;~ imagesearch, indexa1, indexa2, 0, 0, 0, 0, *100 scroll.png
+;~ if errorlevel = 0
+;~ pixelgetcolor, outpurvar, x, y
+
+;~ scroll search::
+;~ PixelGetColor, testid, 100, 100
+;~ testid2:=0xFFFFFF
+
+;~ if testid = %testid2%
+;~ {
+;~ MsgBox, valid
+;~ }
+;~ return
+
+
+
+Buttonid_Pix:
+guicontrol,,edit_i1,%var399%
+
+guicontrol,,edit_i2,%var397%
+
+guicontrol,,edit_i3,%var398%
+
+return
+
+ButtonPrimary:
+guicontrol,,edit_i4,%var400%
+
+return
+
+ButtonVoid:
+
+guicontrol,,edit_i5,%var400%
+
+return
+
+ButtonSubmit:
+
+gui,submit,nohide
+
+msgbox, %ddl2%
+
+return
+
+
+F5::
+mousegetpos var397, var398
+
+WinGetActiveTitle, var400
+
+Pixelgetcolor, var399, %var397%, %var398%
+
+return
+
+F3::
+WinGetActiveTitle, A1
+winset, trans, 125, %A1%
+return
+
+F4::
+WinGetActiveTitle, A1
+winset, trans, 255, %A1%
+return
+
+
+F6::
+
+var_id_a2:=0xf0f0f0
+PixelGetColor, var_id_a1, 1331, 791
+
+if var_id_a1 = %var_id_a2%
+{
+ mouseclick left, 1331, 805
+ 
+}
+
+return
+
+
+
+F7::
+
+ mousegetpos var_xpos1, var_ypos1
+
+return
+
+F8::
+
+ mousegetpos var_xpos2, var_ypos2
+
+return
+
+F9::
+
+count=0
+loop,10
+{imagesearch, x0, y1, %var_xpos1%, %var_ypos1%, %var_xpos2%, %var_ypos2%, *100 cdata\%count%.png
+if errorlevel = 0
+{
+ mousemove, %x0%, %y1%
+ msgbox, %x0%, %y1%
+ init_gx=%x0%
+
+}
+ count++
+}
+return
+
+F10::
+
+count=0
+loop,10
+{imagesearch, x1, y1, %var_xpos1%, %var_ypos1%, %var_xpos2%, %var_ypos2%, *100 %count%.png
+if errorlevel = 0
+{
+ mousemove, %x1%, %y1%
+ msgbox, %x1%, %y1%
+init_x1=%x1%
+init_y1=%y1%
+
+}
+ count++
+}
+
+return
+
+F11::
+
+count=0
+loop,10
+{imagesearch, x1, y2, %var_xpos1%, %var_ypos1%, %var_xpos2%, %var_ypos2%, *100 %count%.png
+if errorlevel = 0
+{
+ mousemove, %x1%, %y2%
+ msgbox, %x1%, %y2%
+init_y2=%y2%
+
+}
+ count++
+}
+return
+
+m::
+
+goto,label_main
+
+return
+
+label_main:
+
+index_math:=0
+index_score_a:=0
+multiple_math:=0
+
+index_average:=0
+index_gpa_a:=0
+
+index_cm:=0
+index_m:=0
+rcount:=0
+loop, 12
+{
+cal_manual%rcount%:=0
+cal_cmanual%rcount%:=0
+rcount++
+}
+
+;unchaned var_id list
+;image range is will be between gx-1, gx1+=7 submitted gx2
+;PF lable 
+
+x1=%init_x1% ;this is credit var
+y1=%init_y1% ;this is ypos var
+y2=%init_y2% ;this is ypos var2
+
+index_y=%init_y2%
+index_y-=%init_y1% ;to get a init_y var
+
+y2-=1 ; to reduce error
+
+gx1=%init_gx%
+gx2=%init_gx%
+
+gx1-=4
+gx2+=6 ;gx-var is used in get a gredit number
+
+x2=%x1%
+x2+=6
+x3=%x2%
+x3++
+x4=%x3%
+x4+=6 ;this var is used in getting grade number
+
+guicontrol, text, index_ready, Read...
+sleep, 222
+
+
+goto,label_id_c
+return
+
+label_id_b: ;label_id_(a-b-c(label_type_scr)-d
+
+imagesearch, mx, my, 0, 0, 0, 0, *100 PF.png
+if errorlevel = 0
+{
+ goto,label_id_c
+}
+ return
+
+
+label_id_c:
+
+index_gpa_a:=0
+index_score_a:=0
+
+count=0
+loop,10
+{
+imagesearch, mx, my, %gx1%, %y1%, %gx2%, %y2%, *150 %count%.png
+if errorlevel = 0
+{
+ index_gpa_a+=%count% ;clear var
+ index_gpa_b+=%count% ;final var
+ cal_cmanual%index_cm%+=%count% ;written in masterboard
+ index_cm++
+ 
+ mousemove, %mx%, %my%
+ 
+ goto,label_id_d
+ break
+}
+ count++
+}
+
+ goto,label_id_d ;this 
+return
+
+label_id_d:
+
+mathindex:=0
+
+count=0
+loop,10
+{imagesearch, mx, my, %x1%, %y1%, %x2%, %y2%, *150 %count%.png
+if errorlevel = 0
+{
+ index_score_a+=%count%0 
+
+mousemove, %mx%, %my%
+ break
+}
+ count++
+}
+
+
+count=0
+loop,10
+{imagesearch, mx, my, %x3%, %y1%, %x4%, %y2%, *150 %count%.png
+if errorlevel = 0
+{
+ y1+=%index_y%
+ y2+=%index_y%
+
+ index_score_a+=%count%
+ cal_manual%index_m%+=%index_score_a%
+ index_score_a*=%index_gpa_a%
+ 
+ index_score_b+=%index_score_a%
+
+ index_average=%index_score_b%
+ index_average/=%index_gpa_b%
+ 
+ index_m++
+
+ mousemove, %mx%, %my%
+ goto,label_main
+ break
+}
+ count++
+}
+
+return
+
+label_type_scr:
+
+gui,submit,nohide
+
+PixelGetColor, index_scroll_1, %edit_i2%, %edit_i3%
+
+if index_scroll_1 = %edit_i1%
+{
+ mousemove, %edit_i1%, %edit_i2%
+ msgbox, 1, 0001, 002, 1
+ ;~ y1-=%index_y%
+ ;~ y2-=%index_y%
+ ;~ goto,label_id_b
+}
+
+return
+
+
+q::
+index_gpa_a:=1
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=1
+
+index_cm++
+
+return
+
+w::
+index_gpa_a:=2
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=2
+index_cm++
+
+return
+
+e::
+index_gpa_a:=3
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=3
+index_cm++
+
+return
+
+r::
+index_gpa_a:=4
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=4
+index_cm++
+
+return
+
+a::
+index_gpa_a:=-1
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=-1
+
+index_cm++
+
+return
+
+s::
+index_gpa_a:=-2
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=-2
+
+index_cm++
+
+return
+
+d::
+index_gpa_a:=-3
+index_gpa_b+=%index_gpa_a%
+cal_cmanual%index_cm%:=-3
+
+index_cm++
+
+return
+
+
+numpad1::
+send, 1
+
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=100
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+index_score_a:=0
+index_score_a+=1000
+mcount++
+}
+
+
+return
+
+
+numpad2::
+send, 2
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=200
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=2000
+mcount++
+}
+
+return
+
+numpad3::
+send, 3
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=300
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=3000
+mcount++
+}
+
+
+return
+
+numpad4::
+send, 4
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=400
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=4000
+mcount++
+}
+
+
+return
+
+numpad5::
+send,5
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=500
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=5000
+mcount++
+}
+
+
+return
+
+
+numpad6::
+send, 6
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=600
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=6000
+mcount++
+}
+
+
+return
+
+numpad7::
+send, 7
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=700
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=7000
+mcount++
+}
+
+
+return
+
+
+numpad8::
+send, 8
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=800
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=8000
+mcount++
+}
+
+
+return
+
+numpad9::
+send, 9
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=900
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+
+index_score_a:=0
+index_score_a+=9000
+mcount++
+}
+
+
+return
+
+numpad0::
+send, 0
+if mcount=2
+{
+mcount:=0
+}
+
+if mcount=1
+{
+index_score_a+=0
+cal_manual%index_m%+=%index_score_a%
+xgpa+=cal_cmanual%index_m%
+index_score_a*=%xgpa%
+xgpa:=0
+index_score_b+=%index_score_a%
+
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+index_m++
+mcount++
+}
+
+if mcount=0
+{
+index_score_a:=0
+index_score_a+=0
+mcount++
+}
+
+
+return
+
+t::
+
+
+
+rcount:=11
+loop, 12
+{
+ inicredit:=0
+ inigrade:=0
+inigrade+=cal_manual%rcount%
+inicredit+=cal_cmanual%rcount%
+
+
+iniwrite,array%rcount% : credit_%inicredit% grade_%inigrade%,data\array_data.ini,%clipboard%
+
+rcount--
+}
+
+iniwrite,List_view,data\array_data.ini,%clipboard%
+
+iniwrite,average : %index_average%,data\array_data.ini,%clipboard%
+
+iniwrite,-renew-,data\array_data.ini,%clipboard%
+
+index_gpa_a:=0
+index_gpa_b:=0
+index_score_a:=0
+index_score_b:=0
+index_average:=0
+
+xgpa:=0
+mcount:=0
+index_cm:=0
+index_m:=0
+rcount:=0
+loop, 12
+{
+cal_manual%rcount%:=0
+cal_cmanual%rcount%:=0
+guicontrol, text, index_text_f%rcount%,
+rcount++
+}
+
+var_f01:=0
+
+return
+
+f::
+
+if var_f01 > 5
+{
+ goto,var_f0
+}
+
+if var_f01 > 0
+{
+ var_f01--
+ guicontrol, text, index_text_f%var_f01%,
+ var_f01++
+ guicontrol, text, index_text_f%var_f01%, ♨
+ var_f01++
+}
+
+
+if var_f01 = 0
+{
+ guicontrol, text, index_text_f%var_f01%, ♨
+ var_f01++
+}
+
+
+return
+
+var_f0:
+
+if var_f01 = 12
+{
+ goto,var_f1
+ 
+}
+if var_f01 > 6
+{
+ var_f01--
+ guicontrol, text, index_text_f%var_f01%,
+ var_f01++
+ guicontrol, text, index_text_f%var_f01%, ♨
+ var_f01++
+}
+
+if var_f01 = 6
+{
+ var_f01--
+ guicontrol, text, index_text_f%var_f01%,
+ var_f01++
+ guicontrol, text, index_text_f%var_f01%, ♨
+ var_f01++
+
+}
+
+return
+
+var_f1:
+
+var_f01=0
+fround=0
+loop, 12
+{
+ guicontrol, text, index_text_f%fround%,
+ fround++
+}
+
+return
+
+g::
+var_f01--
+index_minscore_a=0
+index_minscore_b=0
+
+index_minscore_a+=cal_cmanual%var_f01%
+index_minscore_b+=cal_manual%var_f01%
+index_minscore_b*=%index_minscore_a%
+
+index_gpa_a-=%index_minscore_a%
+index_score_a-=%index_minscore_b%
+index_gpa_a-=%index_minscore_a%
+index_score_a-=%index_minscore_b%
+
+cal_cmanual%var_f01%=0
+cal_manual%var_f01%=0
+
+index_gpa_b-=%index_minscore_a%
+index_score_b-=%index_minscore_b%
+
+index_average=%index_score_b%
+index_average/=%index_gpa_b%
+
+
+var_f01++
+
+return
+
+
+z::
+ send ^v
+ 
+Return
+
+
+
+x::
+
+gui,submit,nohide
+
+if tabcount = 1
+{
+ winactivate, %edit_i4%
+ tabcount = 0
+ return
+}
+
+
+if tabcount = 0 
+{
+ WinActivate, %edit_i5%
+ tabcount = 1
+ return
+}
+
+
+Return
+
+c::
+
+cbcount++
+
+ send ^c
+ 
+sleep,100
+
+guicontrol,,edit_cb%cbcount%,%clipboard%
+
+
+if cbcount=6
+{
+ cbcount=0
+}
+
+if cbcount=2
+{
+ guicontrol,,edit_cb4,
+ guicontrol,,edit_cb5,
+ guicontrol,,edit_cb6,
+}
+
+if cbcount=5
+{
+ guicontrol,,edit_cb1,
+ guicontrol,,edit_cb2,
+ guicontrol,,edit_cb3,
+}
+
+Return
+
+Space::
+ send {enter}
+
+Return
+
+
+
+
+h::
+
+start_index:=0
+
+goto,h_sub
+
+h_sub:
+
+if stop_index = 1
+{
+goto,label_type_stop
+}
+goto,h_sub0
+
+h_sub0:
+
+ send {down}
+sleep, 100
+ send c
+sleep, 100
+ send x
+sleep, 100
+ mouseclick left, 1009, 112
+sleep, 100
+ send ^a
+ send {BS}
+ send z
+sleep, 100
+ send {space}
+
+
+sleep, 850
+
+PixelGetColor, testid, 1090, 511
+testid2:=0xFFEFDF
+
+ if testid = %testid2%
+ {
+ MsgBox, no_index_id
+goto,label_type_stop
+
+ }
+
+ mouseclick left, 788, 430
+
+sleep, 100
+
+ mouseclick left, 798, 531
+ 
+sleep, 200
+
+
+ mouseclick left, 295, 151 
+ 
+sleep, 500
+
+
+imagesearch, x0, y1, 21, 144, 505, 225, *160 20151.png
+if errorlevel = 0
+{
+ mousemove, %x0%, %y1%
+ msgbox, Valid
+
+ 
+ goto,bsub
+}
+
+return
+
+bsub:
+
+mouseclick left, 497, 21
+sleep,100
+ send x
+
+sleep, 100
+
+ goto,h_sub
+
+return
+
+
+
+nss:
+
+
+y1:=220
+y2:=236
+y3:=24
+
+lncredit2:=0
+lngrade2:=0
+goto, label_ln
+
+return
+
+label_ln:
+
+
+count=0
+loop,10
+{
+imagesearch, mx, my, 417, %y1%, 434, %y2%, *150 cdata\%count%.png
+if errorlevel = 0
+{
+ mousemove, %mx%, %my%
+sleep, 100
+ lncredit:=0
+ lncredit+=%count%
+ lncredit2+=%lncredit%
+ sleep, 100
+ goto, label_ln2
+}
+count++
+}
+
+sleep, 100
+last_grade:=0
+last_grade+=%lngrade2%
+
+last_grade/=%lncredit2%
+msgbox, credit(sum) = %lncredit2% `n grade(sum) = %lngrade2% `n average = %last_grade%
+
+return
+
+label_ln2:
+
+count=0
+loop,10
+{
+imagesearch, mx, my, 525, %y1%, 540, %y2%, *150 gdata\%count%.png
+if errorlevel = 0
+{
+ mousemove, %mx%, %my%
+ sleep, 100
+ lngrade:=0
+ lngrade_index:=0
+ lngrade_index+=%count%
+ lngrade_index*=500
+ sleep, 100
+ lngrade+=%lngrade_index%
+ lngrade*=%lncredit%
+ lngrade2+=%lngrade%
+ y1+=%y3%
+ y2+=%y3%
+ 
+ sleep, 100
+ 
+ goto,label_ln3
+}
+count++
+}
+
+return
+
+label_ln3:
+
+imagesearch, mx, my, 525, %y1%, 540, %y2%, *150 gdata\500.png
+if errorlevel = 0
+{
+  mousemove, %mx%, %my%
+ sleep, 100
+ lngrade:=0
+
+ sleep, 100
+ lngrade+=500
+ lngrade*=%lncredit%
+ lngrade2+=%lngrade%
+ y1+=%y3%
+ y2+=%y3%
+}
+
+return
+
+
+
+
+
+
+;~ mouseclick left, 671, 166
+
+;~ return
+
+v::
+
+send, t
+sleep, 100
+
+winactivate, %edit_i4%
+
+send, {down}
+sleep, 150
+
+
+
+Send, c
+sleep, 100
+
+
+winactivate, %edit_i5%
+
+sleep,100
+
+mouseclick left, 381, 66 
+
+mouseclick left, 381, 66
+
+sleep, 350
+
+
+send, {BS}
+sleep, 150
+
+send, z
+sleep, 150
+
+send, {enter}
+
+sleep, 200
+
+Loop,10
+{
+sleep, 250
+imagesearch, mx, my, 85, 160, 284, 183, *100 lns.png
+if errorlevel = 0
+{
+ sleep,100
+ goto,label_lns_n
+}
+sleep, 500
+wingetactivetitle, titlexx
+sleep, 100
+if titlexx = 자료 마지막
+{
+ send, {space}
+ sleep, 150
+}
+send, b
+}
+
+
+return
+
+label_lns_n:
+send, n
+
+return
+
+n::
+
+send, t
+
+sleep, 100
+
+y1:=220
+y2:=236
+y3:=24
+goto,pre_label_lns
+
+return
+
+pre_label_lns:
+
+count=0
+loop,2
+{
+imagesearch, mx, my, 525, %y1%, 540, %y2%, *150 predata\%count%.png
+if errorlevel = 0
+{
+sleep, 100
+y1+=%y3%
+y2+=%y3%
+goto,pre_label_lns 
+}
+count++
+}
+
+goto,label_lns
+
+
+label_lns:
+
+
+count=0
+loop,10
+{
+imagesearch, mx, my, 417, %y1%, 434, %y2%, *150 cdata\%count%.png
+if errorlevel = 0
+{
+ sleep, 100
+ mousemove, %mx%, %my%
+
+if count = 1
+{
+ send, q
+}
+if count = 2
+{
+ send, w
+}
+if count = 3
+{
+ send, e
+}
+if count = 4
+{
+ send, r
+}
+
+sleep, 100
+goto,label_ln5
+}
+
+count++
+}
+
+sleep, 150
+
+if index_average >=1750
+{
+msgbox,1,1sec box, avg.. %index_average% ----- [valid] `n`n stn70.. 1750 `n stn80.. 2750,2 
+sleep,150
+send, v
+
+}
+
+if index_average <1750
+{
+msgbox, avg.. %index_average% ------ [lower than 1.75]
+sleep,150
+}
+
+return
+
+label_ln5:
+
+count=0
+loop,5
+{
+imagesearch, mx, my, 525, %y1%, 540, %y2%, *150 gdata\%count%.png
+if errorlevel = 0
+{
+ mousemove, %mx%, %my%
+ 
+ sleep, 100
+send, {numpad%count%}
+ 
+ sleep, 100
+ 
+ goto,label_ln6
+}
+count++
+}
+
+return
+
+label_ln6:
+
+imagesearch, mx, my, 535, %y1%, 546, %y2%, *150 gdata\5.png
+if errorlevel = 0
+{
+  mousemove, %mx%, %my%
+send, {numpad5}
+ y1+=%y3%
+ y2+=%y3%
+ 
+ sleep, 100
+ goto,pre_label_lns 
+}
+send, {numpad0}
+ y1+=%y3%
+ y2+=%y3%
+ sleep, 100
+ goto,pre_label_lns 
+
+return
+
+b::
+
+mouseclick left, 671, 166
+
+return
+
+
+
+
+
+y::
+
+wingettitle, test_id_t, a
+
+sleep, 100
+
+clipboard = %test_id_t%
+
+return
+
+label_type_stop:
+
+return
+
+
+
+ButtonMail:
+
+msgbox, infeldsaule@kosaf.go.kr
+
+return
+
+ButtonF2=Exit:
+Exitapp
+
+GuiClose:
+ExitApp
+
+f2::
+exitapp
