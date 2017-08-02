@@ -20,6 +20,7 @@ tabcount=0
 ;~ gui, add, picture, x7 y7 w100 h100 , data\관리자.png
 
 stringreplace,list,list,|,||
+
 Gui, Add, Text, x20 y10 w70 h10 , BombFire!
 
 Gui, Add, Text, x20 y30 w70 h10 vtext,
@@ -68,6 +69,7 @@ gui, add, edit, x230 y178 w55 h20, v5
 
 gui, add, edit, x285 y178 w55 h20, v6
 
+
 gui, add, edit, x340 y178 w55 h20, v7
 
 gui, add, edit, x230 y198 w55 h20, v8
@@ -76,11 +78,11 @@ gui, add, edit, x285 y198 w55 h20, v9
 
 gui, add, edit, x340 y198 w55 h20, s1
 
-gui, add, edit, x230 y218 w55 h20, static2
+gui, add, edit, x230 y218 w55 h20, s2
 
-gui, add, edit, x285 y218 w55 h20, static3
+gui, add, edit, x285 y218 w55 h20, s3
 
-gui, add, edit, x340 y218 w55 h20, static4
+gui, add, edit, x340 y218 w55 h20, s4
 
 ;end of edit
 
@@ -98,7 +100,7 @@ gui, add, button, x285 y70 w55 h20, Primary
 
 gui, add, button, x285 y90 w55 h20, Handle
 
-gui, add, button, x340 y70 w55 h20, void
+gui, add, button, x340 y70 w55 h20, vid
 
 gui, add, button, x340 y90 w55 h20, Coorde
 
@@ -129,7 +131,6 @@ Gui, Add, Text, x52 y192 w30 h12 vgpa_math2,
 Gui, Add, Text, x15 y213 w30 h12 vgpa_math3,
 
 Gui, Add, Text, x47 y213 w40 h12, (auto.)
-
 Gui, Add, Text, x15 y228 w70 h12 vindex_ready,
 
 Gui, Add, Text, x103 y140 w14 vguiindex_cm0,
