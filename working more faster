@@ -1,0 +1,1789 @@
+#SingleInstance force
+
+winget,var,list
+loop,%var%
+{
+vartemp:=var%A_Index%
+wingettitle,title,ahk_id %vartemp%
+if title=
+continue
+
+count++
+id%count%:=vartemp
+list=%list%%title%|
+}
+
+count = 0
+stopcount = 0
+transcount = 0
+
+; Generated using SmartGUI Creator for SciTE
+Gui, Show, x1430 y167 w455 h385, testGUI
+
+
+Gui_y = 10
+Gui, Add, ddl, x330 y%Gui_y% w120 h120 altsubmit  vddl,%list%
+Gui_y+=24
+
+Gui, Add, Edit, vNewname r1 x330 y%Gui_y% w120 h22,
+Gui_y+=24
+
+gui, add, button, x330 y%Gui_y% w60 h22, Change
+
+gui, add, button, x390 y%Gui_y% w60 h22, Reload
+Gui_y+=24
+
+gui, add, button, x330 y%Gui_y% w60 h22, ontop(on
+
+gui, add, button, x390 y%Gui_y% w60 h22, ontop(off
+Gui_y+=24
+
+gui, add, button, x330 y%Gui_y% w60 h22, Trans(on
+
+gui, add, button, x390 y%Gui_y% w60 h22, Trans(off
+Gui_y+=24
+
+gui, add, button, x330 y%Gui_y% w60 h22, PrintF9
+
+gui, add, button, x390 y%Gui_y% w60 h22, Deleteini
+
+
+
+
+
+;2nd rows
+
+Gui_x = 195
+
+Gui_y = 10
+
+gui, add, edit, x%Gui_x% y%Gui_y% w65 h22 vedit2,
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w32 h22, *.8
+Gui_x+=33
+
+gui, add, button, x%Gui_x% y%Gui_y% w32 h22, *.64
+Gui_y+=24
+Gui_x-=33
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, File(F1)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Close(F2)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Print(F3)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, PgPrt(F4)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, GetId(F5)
+Gui_y+=24
+
+Gui, add, text, x%Gui_x% y%Gui_y% w130 h11, ----------------------------------
+Gui_y+=13
+
+gui, add, Edit, x%Gui_x% y%Gui_y% w130 h22 veditcard, Notin
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Card
+Gui_y+=24
+
+
+Gui, Add, CheckBox, x%Gui_x% y%Gui_y% w65 h22 vcheck1, 성적증명
+Gui_y+=24
+
+Gui, Add, CheckBox, x%Gui_x% y%Gui_y% w65 h22 vcheck2, 보험서류
+Gui_y+=24
+
+Gui, add, text, x%Gui_x% y%Gui_y% w130 h22, targetpage[]
+Gui_y+=24
+
+Gui, add, text, x%Gui_x% y%Gui_y% w130 h22, #9 확인서 승인 루트
+Gui_y += 24
+
+Gui, add, text, x%gui_x% y%Gui_y% w130 h22, #q 완료대상자
+Gui_y += 24
+
+;~ Gui, Add, Button, x%Gui_x% y%Gui_y% w65 h22, test
+
+;~ Gui, Add, Edit, x%Gui_x% y%Gui_y% w65 h22 vedit_univ, 대학
+;~ Gui_y+=24
+
+;~ Gui, Add, Button, x%Gui_x% y%Gui_y% w65 h22, find
+
+
+Gui_x = 262
+
+Gui_y = 10
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Inqly(F6)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Srch1(F7)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Scrh2(F8)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, (F9)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, (F10)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Input(F11)
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, (F12)
+Gui_y+=24
+Gui_y+=13
+Gui_y+=24
+
+gui, add, button, x%Gui_x% y%Gui_y% w65 h22, Print(ini)
+Gui_y+=24
+
+Gui, Add, CheckBox, x%Gui_x% y%Gui_y% w65 h22 vcheck3, 졸업증명
+Gui_y+=24
+
+Gui, Add, CheckBox, x%Gui_x% y%Gui_y% w65 h22 vcheck4, 이전경력
+Gui_y+=24
+
+Gui_y = 10
+gui, add, text, x10 y%Gui_y% w170 h15 vtext1,
+Gui_y+= 20
+
+gui, add, text, x10 y%Gui_y% w170 h25 vtext2,
+Gui_y+=30
+
+gui, add, text, x10 y%Gui_y% w170 h45 vtext3,
+Gui_y+=50
+
+gui, add, text, x10 y%Gui_y% w170 h15 vtext4,
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w90 h15, #Messages to*
+
+gui, add, edit, x105 y%Gui_y% w85 h15 vedit1,
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #1 보험서류
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #2 메일주소
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #3 성적, 졸업 수정
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #4 재스캔
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #5 성적증명서 발급 3개월
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #6 첨부서류 부족
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #7 확인서 작성 방법
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #8 경력작성 확인
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #v menu1 [L]
+Gui_y+=20
+
+gui, add, text, x10 y%Gui_y% w170 h15, #z F9 [Stop]
+Gui_y+=20
+
+gui, add, edit, x10 y%Gui_y% w80 h22 vedituniv, 대학
+
+gui, add, button, x95 y%Gui_y% w80 h22, search
+
+
+guicontrol, text, text4, N[notin] P[notin]
+
+guicontrol, text, text2, App [close] %webmassage%
+
+winset, alwaysontop, on, testGUI
+
+Loop
+{
+	sleep, 100
+	mousegetpos, x, y
+	guicontrol, text, text1, CoordMode [off] %x% %y%
+	wingetactivetitle, title
+	guicontrol, text, text3, %title%
+	;~ if title = %webmassage%
+	;~ {
+	;~ send, {enter}
+	;~ }
+	
+	IfWinExist, %webmassage%
+	{
+		send, {enter}
+	}
+}
+return
+
+F11::
+WinGetActiveTitle, webmassage
+guicontrol, text, text2, App [close] %webmassage%
+return
+
+F1::
+imagesearch, xx, yy, 1140, 1020, 1231, 1050, *150 open.png
+if errorlevel = 0
+{	
+	sleep,  100
+	mouseclick, left, 1180, 1040
+}
+return
+
+F2::
+WinClose, %title%
+return
+
+F3::
+send, ^p
+
+loop,10
+{
+WinGetActiveTitle, xx
+
+sleep, 500
+if xx = 인쇄
+{
+	send, {enter}
+ return
+}
+}
+return
+
+
+
+F4::
+
+mouseclick, right
+sleep, 500
+send, n
+sleep, 400
+
+loop,10
+{
+wingetactivetitle, xx
+sleep, 300
+if xx = 인쇄 미리 보기
+{
+	goto,label01
+}
+}
+return
+
+
+label01:
+
+mouseclick, left, 513, 43
+sleep, 400
+mouseclick, left, 482, 270
+sleep, 500
+mouseclick left, 581, 47
+sleep, 500
+send, ^a
+sleep, 200
+send, 65
+sleep, 1000
+send, {enter}
+sleep, 1000
+
+loop,10
+{
+send, !p
+
+sleep, 400
+
+WinGetActivetitle, xx
+
+sleep, 400
+if xx = 인쇄
+{
+
+sleep, 1100
+
+send, {enter}
+
+sleep, 500
+
+goto, labelclose
+}
+}
+return
+
+
+F5::
+	gui, submit, nohide	
+	imagesearch, xp1, yp1, 20, 20, 1267, 986, *100 pname.png
+		if errorlevel = 0
+		{
+			xp1+=160
+			yp1+=5
+			mouseclick, left, %xp1%, %yp1%
+			send, ^a
+			send, ^c
+			strvar1 = %Clipboard%
+		}
+		sleep, 250
+			imagesearch, xp1, yp1, 20, 20, 1267, 986, *100 phoneno.png
+		if errorlevel = 0
+		{
+			xp1+=120
+			yp1+=5
+			mouseclick, left, %xp1%, %yp1%
+			send, ^a
+			send, ^c
+			strvar2 = %Clipboard%
+		}
+		sleep, 500
+		
+guicontrol, text, text4, N[%strvar1%] P[%strvar2%]
+sleep, 100
+guicontrol,,edit1,%clipboard%
+
+return
+
+F6::
+gui, submit, nohide
+
+imagesearch, xx, yy, 568, 164, 708, 261, *125 datasms\recvno.png
+	if errorlevel = 0
+	{
+	yy++
+	xx+=120
+	mouseclick, left, %xx%, %yy%
+		sleep, 100
+	send, ^a
+	sleep, 50
+	send, {BS}
+	sleep, 50
+	
+	send, %edit1%
+	sleep, 100
+	send, {tab}
+	sleep, 100
+	send, {tab}
+	sleep, 100
+	send, {tab}
+	sleep, 100
+	send, {enter}
+	return	
+	}
+
+imagesearch, xx, yy, 19, 605, 225, 1000, *125 datasms\sms.png
+if errorlevel = 0
+{
+	xx++
+	yy++
+mouseclick, left, %xx%, %yy%
+}
+
+loop, 10
+{
+	sleep, 250
+imagesearch, xx, yy, 568, 164, 708, 261, *125 datasms\recvno.png
+	if errorlevel = 0
+	{
+	yy++
+	xx+=120
+	mouseclick, left, %xx%, %yy%
+	send, %edit1%
+	sleep, 100
+	send, {tab}
+	sleep, 100
+	send, {tab}
+	sleep, 100
+	send, {tab}
+	sleep, 100
+	send, {enter}
+	return	
+	}
+}
+return
+
+F7::
+gui, submit, nohide
+
+ImageSearch, xx, yy, 248, 255, 390, 336, *125 datareg\3rd.png
+if errorlevel = 0
+{
+xx+=120
+mouseclick, left, %xx%, %yy%
+sleep, 50
+send, ^a
+sleep, 50
+send, {BS}
+sleep, 100
+send, %strvar1%
+sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+send, {Enter}
+return
+}
+
+imagesearch, xx, yy, 17, 144, 221, 243, *125 datareg\2nd.png
+if errorlevel = 0
+{
+	xx++
+	yy++
+mouseclick, left, %xx%, %yy%
+}
+
+loop, 10
+{
+	sleep, 250
+ImageSearch, xx, yy, 248, 255, 390, 336, *125 datareg\3rd.png
+if errorlevel = 0
+{
+xx+=120
+mouseclick, left, %xx%, %yy%
+send, %strvar1%
+sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+send, {Enter}
+return
+}
+}
+
+return
+
+F8::
+gui, submit, nohide
+
+ImageSearch, xx, yy, 266, 226, 341, 289, *125 datareg\3rd.png
+if errorlevel = 0
+{
+xx+=120
+mouseclick, left, %xx%, %yy%
+sleep, 50
+send, ^a
+sleep, 50
+send, {BS}
+sleep, 50
+send, %strvar1%
+sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+;~ send, {tab}
+;~ sleep, 100
+send, {Enter}
+return
+}
+
+
+imagesearch, xx, yy, 17, 144, 221, 243, *125 datareg\no3.png
+if errorlevel = 0
+{
+	xx++
+	yy++
+mouseclick, left, %xx%, %yy%
+}
+
+loop, 10
+{
+	sleep, 250
+ImageSearch, xx, yy, 248, 255, 390, 336, *125 datareg\3rd.png
+if errorlevel = 0
+{
+xx+=120
+mouseclick, left, %xx%, %yy%
+send, %strvar1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {Enter}
+return
+}
+}
+
+return
+
+F9::
+gui, submit, nohide
+if stopcount = 1
+{
+	stopcount = 0
+	return
+}
+
+imagesearch, xx, ycount, 250, 350, 524, 591, *125 keyf9.png
+if errorlevel = 0
+{
+ylist1 = %ycount%
+ylist2 = %ycount%
+ylist1+=354
+ylist2+=383
+
+ycount+=70
+ycount2 = %ycount%
+pageno = 2
+
+}
+
+goto, labelauto0
+return
+
+
+labelauto0:
+if stopcount = 1
+{
+stopcount = 0
+return
+}
+
+if count = 10
+{
+	count = 0
+	ycount = %ycount2%
+	iniread, inidata, inidata\checklist, noname
+	msgbox, 1, lise, %inidata%, 3
+	;~ inidelete, inidata\checklist, noname
+	sleep, 200
+	
+	if pageno = 2
+	{
+		ImageSearch, xx, yy, 641, %ylist1%, 876, %ylist2%, *125 pageno\2.png
+		if errorlevel = 0
+		{
+			sleep, 100
+			pageno++
+			xx++
+			yy++
+			mouseclick, left, %xx%, %yy%
+			sleep, 100
+			goto, labelauto1
+		}
+	}
+	
+		if pageno = 3
+	{
+		ImageSearch, xx, yy, 641, %ylist1%, 876, %ylist2%, *125 pageno\3.png
+		if errorlevel = 0
+		{
+			sleep, 100
+			pageno = 1
+			xx++
+			yy++
+			mouseclick, left, %xx%, %yy%
+			sleep, 100
+			goto, labelauto1
+}
+	}
+	
+		if pageno = 1
+	{
+		ImageSearch, xx, yy, 641, %ylist1%, 876, %ylist2%, *125 pageno\1.png
+		if errorlevel = 0
+		{
+			sleep, 100
+			pageno++
+			xx++
+			yy++
+			mouseclick, left, %xx%, %yy%
+			sleep, 100
+			goto, labelauto1
+}
+	}
+	
+	return
+}
+
+labelauto1:
+
+if stopcount = 1
+{
+stopcount = 0
+return
+}
+
+
+sleep, 1000
+count++
+mouseclick, left, 692, %ycount%
+
+loop, 10
+{
+	
+	
+	imagesearch, xp1, yp1, 20, 20, 1267, 986, *100 pname.png
+		if errorlevel = 0
+		{
+			xp1+=160
+			yp1+=5
+			mouseclick, left, %xp1%, %yp1%
+			sleep, 100
+			send, ^a
+			sleep, 100
+			send, ^c
+			sleep, 100
+			iniread, namevar, inidata\dataini, %clipboard%
+			sleep, 100
+			msgbox, 1, good, %namevar%, 1
+			stagecount = 1
+			sleep, 100
+			mouseclick, left, 1300, 600
+			sleep, 100
+			
+			;~ ;start image sarch
+ImageSearch, xx, yy, 348, 796, 483, 1008, *125 ex\sample3.png
+if errorlevel = 0
+{
+	
+	xx+=461
+	yy+=10
+	sleep, 100
+				;~ mousemove, %xx%, %yy%
+				;~ msgbox, ok
+	pixelgetcolor, color2, %xx%, %yy%
+	sleep, 50
+	if color2 = 0xCC6600
+		{
+			mouseclick, left, %xp1%, %yp1%
+			sleep, 100
+			send, ^a
+			sleep, 100
+			send, ^c
+	sleep, 200
+		iniwrite, %count% : %clipboard% , inidata\checklist, noname
+		sleep, 100
+		}
+
+}
+
+ImageSearch, xx, yy, 348, 796, 483, 1008, *125 ex\sample4.png
+if errorlevel = 0
+{
+	yy+=10
+	xx+=461
+    	sleep, 100
+		;~ mousemove, %xx%, %yy%
+		;~ msgbox, ok
+		pixelgetcolor, color3, %xx%, %yy%
+		sleep, 100
+			if color3 = 0xCC6600
+		{
+			sleep, 100	
+			iniwrite, %count% : %clipboard% , inidata\checklist, noname
+			sleep, 100
+		}
+}
+
+;end imagesearch
+		
+		
+		goto, labelauto
+		}
+}
+
+
+return
+
+labelauto:
+
+if stopcount = 1
+{
+stopcount = 0
+return
+}
+
+
+msgbox, 1, good, gotoback, 2
+ycount+=29
+
+sleep, 100
+send, {esc}
+sleep, 200
+send, {BS}
+sleep, 1000
+goto, labelauto0
+
+return
+
+F10::
+
+gui, submit, nohide
+
+mousegetpos, xx, yy
+
+pixelgetcolor, colorr, %xx%, %yy% 
+
+msgbox, %colorr%
+
+yy--
+
+mousemove, %xx%, %yy%
+
+return
+
+f12::
+gui, submit, nohide
+WinGetActiveTitle, putvar
+sleep, 50
+WinSet, AlwaysOnTop, On, %putvar%
+
+return
+
+
+ButtonCard:
+Gui, submit, nohide
+
+iniwrite, memo : %editcard%, inidata\dataini, %strvar1%
+sleep, 50
+
+if check1 = 1
+{
+iniwrite, check : 성적증명서, inidata/dataini, %strvar1%
+sleep, 50
+}
+
+if check2 = 1
+{
+iniwrite, check : 보험서류, inidata/dataini, %strvar1%
+sleep, 50
+}
+
+if check3 = 1
+{
+iniwrite, check : 졸업증명서, inidata/dataini, %strvar1%
+sleep, 50
+}
+
+if check4 = 1
+{
+iniwrite, check : 이전경력 미신고, inidata/dataini, %strvar1%
+sleep, 50
+}
+
+FormatTime, xx
+iniwrite, %xx%, inidata\dataini, %strvar1%
+sleep, 50
+
+iniread, yy, inidata\dataini, %strvar1%
+msgbox, %yy%
+
+guicontrol,, editcard, Notin
+guicontrol,, check1, 0
+guicontrol,, check2, 0
+guicontrol,, check3, 0
+guicontrol,, check4, 0
+
+return
+
+ButtonPrint(ini):
+gui, submit, nohide
+
+if editcard <> Notin
+{
+	
+iniread, yy, inidata\dataini, %editcard%
+msgbox, %yy%
+
+guicontrol,, check1, 0
+guicontrol,, check2, 0
+guicontrol,, check3, 0
+guicontrol,, check4, 0
+guicontrol,, editcard, Notin
+return
+}
+
+
+iniread, yy, inidata\dataini, %strvar1%
+msgbox, %yy%
+
+guicontrol,, check1, 0
+guicontrol,, check2, 0
+guicontrol,, check3, 0
+guicontrol,, check4, 0
+return
+
+buttonsearch:
+gui, submit, nohide
+
+if edituniv = 가천
+{
+msgbox, [ 2003. 1. 1] `n[ - ]
+}
+
+if edituniv = 강원
+{
+msgbox, 공학대학`n[ 2004. 1. 1] `nexpire`n[2014. 12. 31]`n공과대학`n[2002. 1. 1]`n[2008. 1. 31 - 2018. 1. 30]
+}
+
+
+if edituniv = 경기 
+{
+msgbox, [ 2002. 1. 1] `n[2009. 7. 31 - 2019. 7. 30]
+}
+
+
+if edituniv = 경남과학기술
+{
+msgbox, [ 2006. 1. 1] `n[ - ]
+}
+
+if edituniv = 경남
+{
+msgbox, [ 2003. 1. 1] `n[ - ]
+}
+
+if edituniv = 경북
+{
+msgbox, [ 2002. 1. 1] `n[2009. 1. 31 - 2019. 1. 30]
+}
+
+
+if edituniv = 경상
+{
+msgbox, [ 2002. 1. 1] `n[2011. 01. 31 - 2021. 01. 30]
+}
+
+
+if edituniv = 경성
+{
+msgbox, [ 2011. 1. 1] `n[ - ]
+}
+
+
+if edituniv = 경일	
+{
+msgbox, [ 2003. 1. 1] `n[ - ]
+}
+
+if edituniv = 경주
+{
+msgbox, [ 2004. 1. 1] `n[ 2011. 12. 31 ]
+}
+
+if edituniv = 경희
+{
+msgbox, [ 2007. 1. 1] `n[2013. 7. 31 - 2018. 7. 30]
+}
+
+if edituniv = 계명
+{
+msgbox, [ 2002. 1. 1] `n[ - ]
+}
+
+if edituniv = 고려
+{
+msgbox, [ 2003. 1. 1] `n[2012. 1. 31 - 2022. 1. 30]
+}
+
+if edituniv = 공주
+{
+msgbox, [ 2002. 1. 1] `n[2014. 1. 31 - 2019. 1. 30]
+}
+
+if edituniv = 가톨릭
+{
+msgbox, [ 2004. 1. 1] `n[2014. 1. 31 - 2019. 1. 30]
+}
+
+if edituniv = 광운
+{
+msgbox, [ 2003. 1. 1] `n[2014. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 광주
+{
+msgbox, [ 2005. 1. 1] `n[ - ]
+}
+
+if edituniv = 국민
+{
+msgbox, [ 2002. 1. 1] `n[2010. 7. 31 - 2020. 7. 30]
+}
+
+if edituniv = 금오공과
+{
+msgbox, [ 2003. 1. 1] `n[2017. 1. 31 - 2020. 1. 30]
+}
+
+if edituniv = 남서울
+{
+msgbox, [ 2008. 1. 1] `n[ - ]
+}
+
+if edituniv = 단국
+{
+msgbox, [ 2002. 1. 1] `n[2010. 1. 29 - 2020. 1. 30]
+}
+
+if edituniv = 대구가톨릭
+{
+msgbox, [ 2005. 1. 1] `n[2014. 7. 31 - 2019. 7. 30]
+}
+
+if edituniv = 대전
+{
+msgbox, [ 2003. 1. 1] `n[ - ]
+}
+
+if edituniv = 동명
+{
+msgbox, [ 2012. 1. 1] `n[ - ]
+}
+
+if edituniv = 동서
+{
+msgbox, [ 2004. 1. 1] `n[2012. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 동신
+{
+msgbox, [ 2003. 1. 1] `n[ 2011.12.31 ]
+}
+
+if edituniv = 동아
+{
+msgbox, [ 2002. 1. 1] `n[2009. 7. 31 - 2019. 7. 30]
+}
+
+if edituniv = 동의
+{
+msgbox, [ 2002. 1. 1] `n[2013. 7. 31 - 2018. 7. 30]
+}
+
+if edituniv = 명지
+{
+msgbox, [ 2002. 1. 1] `n[2007. 2. 1 - 2022. 1. 30]
+}
+
+if edituniv = 목원
+{
+msgbox, [ 2002. 1. 1] `n[ - ]
+}
+
+if edituniv = 목포
+{
+msgbox, [ 2002. 1. 1] `n[2011. 1. 31 - 2021. 1. 30]
+}
+
+if edituniv = 배재
+{
+msgbox, [ 2002. 1. 1] `n[2017. 1. 31 - 2022. 1. 30]
+}
+
+if edituniv = 부경
+{
+msgbox, [ 2002. 1. 1] `n[2008. 1. 31 - 2018. 1. 30]
+}
+
+if edituniv = 부산
+{
+msgbox, [ 2002. 1. 1] `n[2011. 7. 31 - 2021. 7. 30]
+}
+
+if edituniv = 삼육
+{
+msgbox, [ 2006. 1. 1] `n[ - ]
+}
+
+if edituniv = 서울과학기술
+{
+msgbox, [ 2002. 1. 1] `n[2008. 1. 31 - 2018. 1. 30]
+}
+
+if edituniv = 서울
+{
+msgbox, [ 2002. 1. 1] `n[2007. 2. 1 - 2022. 1. 30]
+}
+
+if edituniv = 서울시립
+{
+msgbox, [ 2002. 1. 1] `n[2007. 2. 1 - 2022. 1. 30]
+}
+
+if edituniv = 선원
+{
+msgbox, [ 2005. 1. 1] `n[ 2012.12.3 ]
+}
+
+if edituniv = 선문
+{
+msgbox, [ 2002. 1. 1] `n[2012. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 성균관
+{
+msgbox, [ 2003. 1. 1] `n[2009. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 세종
+{
+msgbox, [ 2002. 1. 1] `n[2011. 1. 31 - 2021. 1. 30]
+}
+
+if edituniv = 순천
+{
+msgbox, [ 2002. 1. 1] `n[ - ]
+}
+
+if edituniv = 순천향
+{
+msgbox, [ 2013. 1. 1] `n[ - ]
+}
+
+if edituniv = 숭실 
+{
+msgbox, [ 2003. 1. 1] `n[2012. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 신라
+{
+msgbox, [ 2013. 1. 1] `n[ - ]
+}
+
+if edituniv = 아주
+{
+msgbox, [ 2003. 1. 1] `n[2011. 1. 31 - 2021. 1. 30]
+}
+
+if edituniv = 연세
+{
+msgbox, [ 2003. 1. 1] `n[2009. 7. 31 - 2019. 7. 30]
+}
+
+if edituniv = 영남
+{
+msgbox, [ 2002. 1. 1] `n[2008. 1. 31 - 2021. 1. 30]
+}
+
+if edituniv = 울산
+{
+msgbox, [ 2002. 1. 1] `n[2008. 7. 31 - 2018. 7. 30]
+}
+
+if edituniv = 원광
+{
+msgbox, [ 2002. 1. 1] `n[2016. 1. 31 - 2019. 1. 30]
+}
+
+if edituniv = 이화여자
+{
+msgbox, [ 2003. 1. 1] `n[2011. 1. 31 - 2021. 1. 30]
+}
+
+if edituniv = 인제
+{
+msgbox, [ 2002. 1. 1] `n[ - ]
+}
+
+if edituniv = 인하
+{
+msgbox, [ 2002. 1. 1] `n[2014. 1. 31 - 2019. 1. 30]
+}
+
+if edituniv = 전남
+{
+ msgbox, 공과대학`n[ 2002. 1. 1] `n[2011. 1. 31 - 2020. 7. 30]`n공학대학`n[ - ]
+}
+
+if edituniv = 전북
+{
+msgbox, [ 2002. 1. 1] `n[ 2009. 12. 31 ]
+}
+
+
+if edituniv = 전주
+{
+msgbox, [ 2002. 1. 1] `n[2017. 1. 31 - 2020. 1. 30]
+}
+
+if edituniv = 제주
+{
+msgbox, [ 2003. 1. 1] `n[2012. 1. 31 - 2020. 1. 30]
+}
+
+if edituniv = 조선
+{
+msgbox, [ 2002. 1. 1] `n[2012. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 중앙
+{
+msgbox, [ 2003. 1. 1] `n[2014. 1. 31 - 2019. 1. 30]
+}
+
+if edituniv = 창원
+{
+msgbox, [ 2003. 1. 1] `n[ - ]
+}
+
+if edituniv = 청주
+{
+msgbox, [ 2002. 1. 1] `n[2012. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 충남
+{
+msgbox, [ 2002. 1. 1] `n[2008. 1. 31 - 2018. 1. 30]
+}
+
+if edituniv = 충북
+{
+msgbox, [ 2002. 1. 1] `n[2012. 1. 31 - 2022. 1. 30]
+}
+
+if edituniv = 한경
+{
+msgbox, [ 2002. 1. 1] `n[2013. 1. 31 - 2019. 1. 30]
+}
+
+if edituniv = 한국교통
+{
+msgbox, [ 2003. 1. 1] `n[2010. 7. 31 - 2020. 7. 30]
+}
+
+if edituniv = 한국기술교육
+{
+msgbox, [ 2004. 1. 1] `n[ 2014. 12. 31 ]
+}
+
+if edituniv = 한국예술
+{
+msgbox, [ 2002. 1. 1] `n[2015. 7. 31 - 2020. 7. 30]
+}
+
+if edituniv = 한국해양
+{
+msgbox, [ 2005. 1. 1] `n[ 2009. 12. 31 ]
+}
+
+if edituniv = 한남
+{
+msgbox, [ 2003. 1. 1] `n[2015. 7. 31 - 2020. 7. 30]
+}
+
+if edituniv = 한밭
+{
+msgbox, [ 2003. 1. 1] `n[2010. 1. 29 - 2020. 1. 30]
+}
+
+if edituniv = 한양
+{
+msgbox, [ 2002. 1. 1] `n공과대학`n[2008. 1. 31 - 2018. 1. 30]`n공학대학`n[2009. 7. 31 - 2017. 7. 30]
+}
+
+if edituniv = 호서
+{
+msgbox, [ 2002. 1. 1] `n[2009. 7. 31 - 2019. 7. 30]
+}
+
+if edituniv = 홍익
+{
+msgbox, 공과대학`n[ 2002. 1. 1] `n[2007. 7. 13 - 2017. 7. 30]`n과학기술`n[ 2005. 1. 1]`n[2012. 7. 31 ~ 2017. 7. 30]
+}
+
+if edituniv = 건국
+{
+msgbox, [ 1996. 1. 1] `n[2009. 1. 31 - 2019. 1. 30]
+}
+
+guicontrol,, edituniv,
+
+
+return
+
+#v::
+imagesearch, xx, yy, 22, 193, 112, 248, *125 menu1.png
+if errorlevel = 0
+{
+	mouseclick, left, %xx%, %yy%
+}
+
+return
+
+
+#1::
+gui, submit, nohide
+clipboard = 등록원)보험서류 발급 1주일 이내의 건강보험자격득실확인서로 교체해주시기 바랍니다
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+
+return
+;~ F8::
+;~ imagesearch, x1, y1, 1095, 600, 1165, 850, *150 m1send.jpeg
+;~ if errorlevel = 0
+;~ {
+	;~ msgbox, 1
+;~ }
+
+;~ return
+	
+	;~ loop{
+	
+;~ WinGetActiveTitle, x1
+;~ sleep, 500
+;~ if x1 = 웹 페이지의 메세지
+;~ {
+	;~ sleep, 200
+	;~ send, {enter}
+	;~ goto, labelclose
+;~ }
+;~ }
+;~ }
+
+
+
+
+return
+
+#2::
+gui, submit, nohide
+clipboard = 등록원) 건축사등록원 메일주소 kirakarb@kirakarb.or.kr
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+
+return
+
+#3::
+gui, submit, nohide
+clipboard =  건축사등록원) 성적증명서 및 졸업증명서 발급 3개월 내 서류로 수정
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+
+return
+
+#4::
+gui, submit, nohide
+clipboard = 건축사등록원) 스캔본 식별이 안되니 재스캔후 수정 요망
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+return
+
+#5::
+gui, submit, nohide
+Clipboard = 건축사등록원)성적증명서 발급 3개월내 서류 제출
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+return
+
+#6::
+gui,submit,nohide
+clipboard = 건축사등록원)첨부서류 부족하여 처리지연중입니다.
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+return
+
+#7::
+gui,submit,nohide
+clipboard = 건축사등록원)확인서 작성방법은 건축사등록원홈페이지 좌측 공지사항 참조해주세요
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+
+return
+
+#8::
+gui,submit,nohide
+if editcard = Notin
+{
+	editcard = 
+}
+clipboard = 건축사등록원)이전 근무처 경력 %editcard%확인서 작성후 변경처리 가능
+
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+return
+
+#9::
+gui,submit,nohide
+if editcard = Notin
+{
+	editcard = 
+}
+clipboard = 등록원) 등록원홈페이지-건축사-실무수련자감독확인에서 확인서 승인 가능
+
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+return
+
+#q::
+gui,submit,nohide
+if editcard = Notin
+{
+	editcard = 건축사등록원)완료대상자 건강보험자격득실확인서(발급7일내,이전근무처포함)제출요청
+}
+clipboard =
+
+sleep, 100
+send, ^v
+sleep, 100
+send, {tab}
+sleep, 100
+send, %edit1%
+sleep, 100
+send, {tab}
+sleep, 100
+send, {tab}
+sleep, 100
+send, {enter}
+return
+
+#z::
+if stopcount = 0
+{stopcount = 1
+return
+}
+if stopcount = 1
+{
+	stopcount = 0
+	return
+}
+
+
+return
+
+Button*.8:
+gui, submit, nohide
+edit2*=0.8
+msgbox, %edit2%
+
+return
+
+Button*.64:
+gui, submit, nohide
+
+edit2*=0.64
+msgbox, %edit2%
+
+return
+
+buttontest:
+
+iniwrite, test6 , inidata\testini, 1 
+
+iniread, test2, inidata\testini, 1
+
+msgbox %test2%
+
+return
+
+
+
+labelclose:
+
+return
+
+ButtonChange:
+gui,submit,nohide
+targetID := id%ddl%
+WinActivate, ahk_id %targetID%
+WinSetTitle, ahk_id %targetID%,, %Newname%
+return
+
+ButtonReload:
+Reload
+
+return
+
+ButtonTrans(on:
+gui,submit,nohide
+winset, trans, 125, %title%
+return
+
+ButtonTrans(off:
+gui,submit,nohide
+winset, trans, 255, %title%
+return
+
+#space::
+gui,submit,nohide
+
+if transcount = 1
+{
+winset, trans, 255, %title%
+transcount = 0
+return
+}
+
+if transcount = 0
+{
+winset, trans, 125, %title%
+transcount = 1
+return
+}
+return
+
+
+;~ Buttonontop(on:
+;~ gui,submit,nohide
+;~ return
+
+;~ Buttonontop(off:
+;~ gui,submit,nohide
+;~ return
+
+#t::
+gcount = 17
+send, ^c 
+sleep, 200
+gboolean%gcount% = 1
+	stringreplace, edate%gcount%, clipboard, ., -, all
+	sleep, 50
+	send, {tab}
+	sleep, 50
+	send, ^c
+	sleep, 200
+	stringreplace, sdate%gcount%, clipboard, ., -, all
+	sleep, 100
+return
+
+#y::
+gcount = 17
+
+sleep, 50
+stringreplace, adate, edate%gcount%,a,a,all
+stringreplace, bdate, sdate%gcount%,a,a,All
+;~ adata = edate%gcount%
+;~ bdate = sdate%gcount%
+clipboard = e.date%gcount% <- as.Date(z%adate%z)
+stringreplace, clipboard, clipboard, z, ", all
+sleep, 66
+send, ^v
+sleep, 66
+send, {enter}
+
+clipboard = s.date%gcount% <- as.Date(z%bdate%z)
+stringreplace, clipboard, clipboard, z, ", all
+sleep, 66
+send, ^v
+sleep, 66
+send, {enter}
+sleep, 77
+
+	clipboard = s.date%gcount% - e.date%gcount%
+	sleep, 50
+	send, ^v
+	sleep, 50
+	send, {enter}
+	sleep, 50
+
+
+
+return
+
+#g::
+gcount = 17
+send, ^c 
+sleep, 200
+gboolean%gcount% = 1
+	stringreplace, edate%gcount%, clipboard, ., -, all
+	sleep, 50
+	send, {tab}
+	sleep, 50
+	send, ^c
+	sleep, 200
+	stringreplace, sdate%gcount%, clipboard, ., -, all
+	sleep, 100
+	loop, 5
+	{
+	send, {tab}
+	sleep, 50
+}
+
+
+gcount = 1
+loop, 16
+{
+clipboard = g
+send, ^c
+sleep, 200
+
+if clipboard = g
+{
+	gboolean%gcount% = 0
+	loop, 4
+	{
+	
+	send, {tab}
+	sleep, 50
+
+	}
+}
+
+if  clipboard <> g
+{
+	gboolean%gcount% = 1
+	stringreplace, edate%gcount%, clipboard, ., -, all
+	sleep, 50
+	send, {tab}
+	sleep, 50
+	send, ^c
+	sleep, 200
+	stringreplace, sdate%gcount%, clipboard, ., -, all
+	sleep, 100
+	send, {tab}
+	sleep, 50
+	send, {tab}
+	sleep, 50
+	send, {tab}
+	sleep, 50
+	}
+
+gcount++
+}
+
+msgbox, 1, end, End, 1
+	
+
+return
+
+#h::
+gcount = 1
+
+loop, 17
+{
+	if gboolean%gcount% = 1
+	{
+	sleep, 50
+stringreplace, adate, edate%gcount%,a,a,all
+stringreplace, bdate, sdate%gcount%,a,a,All
+;~ adata = edate%gcount%
+;~ bdate = sdate%gcount%
+clipboard = e.date%gcount% <- as.Date(z%adate%z)
+stringreplace, clipboard, clipboard, z, ", all
+sleep, 66
+send, ^v
+sleep, 66
+send, {enter}
+
+clipboard = s.date%gcount% <- as.Date(z%bdate%z)
+stringreplace, clipboard, clipboard, z, ", all
+sleep, 66
+send, ^v
+sleep, 66
+send, {enter}
+}
+
+gcount++
+
+ 
+}
+
+clipboard = cards <-c(
+sleep, 50
+send, ^v
+sleep, 50
+
+gcount = 1
+
+loop, 16
+{
+	;~ clipboard = e.date%gcount% <- as.Date(z%adate%z)
+	;~ stringreplace, clipboard, clipboard, z, ", all
+	;~ sleep, 66
+	;~ send, ^v
+	;~ send, -
+	;~ sleep, 50
+	;~ clipboard = s.date%gcount% <- as.Date(z%bdate%z)
+	;~ stringreplace, clipboard, clipboard, z, ", all
+	;~ sleep, 66
+	;~ send, ^v
+	;~ sleep, 50
+	;~ send, {enter}
+		if gboolean%gcount% = 1
+	{
+	clipboard = s.date%gcount% - e.date%gcount%,
+	sleep, 50
+	send, ^v
+	sleep, 50
+	}
+gcount++
+}
+
+send, {BS}
+sleep, 20
+
+send, )
+sleep, 40
+send, {enter}
+sleep, 50
+clipboard = newcards <- c(cards + 1)
+sleep, 33
+send, ^v
+sleep, 50
+send, {enter}
+sleep, 50
+clipboard = sum(newcards)
+sleep, 50
+send, ^v
+sleep, 50
+send, {enter}
+sleep, 50
+
+	clipboard = s.date17 - e.date17 + 1
+	sleep, 50
+	send, ^v
+	sleep, 50
+	send, {enter}
+	
+
+
+return
+;~ #t::
+;~ send, ^c
+;~ sleep, 50
+
+;~ stringreplace, ggg, clipboard, ., -, all
+
+;~ msgbox %ggg%
+
+;~ return
+
+#p::
+controlsend,,cards2 <- c(1),RGui (64-bit)
+
+sleep, 50
+controlsend,,{enter},RGui (64-bit)
+
+sleep, 50
+controlsend,,^v,RGui (64-bit)
+
+return
+
+
+#k::
+
+SplashImage, univ.png
+Sleep, 4000
+SplashImage, Off
+
+
+return
+
+ButtonPrintF9:
+	iniread, inidata, inidata\checklist, noname
+	msgbox, %inidata%
+	return
+	
+ButtonDeleteini:
+inidelete, inidata\checklist, noname
+
+return
+
+GuiClose:
+ExitApp
+
