@@ -2,7 +2,7 @@
 WinGetActiveTitle, name
 msgbox, %name%
 
-#make window transparent
+#setting window transparent
 winset, trans, 125, %windowtitlename%
 range: 0 - 255
 
